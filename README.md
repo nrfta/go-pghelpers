@@ -1,1 +1,3 @@
-# go-pg-helpers
+# go-pghelpers
+
+Golang helpers for Postgres.
