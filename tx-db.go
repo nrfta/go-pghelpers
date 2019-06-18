@@ -5,9 +5,7 @@ import (
 	"log"
 	"net/http/httptest"
 
-	txdb "github.com/DATA-DOG/go-txdb"
-
-	"github.com/jmoiron/sqlx"
+	"github.com/DATA-DOG/go-txdb"
 )
 
 var (
@@ -22,11 +20,10 @@ func RegisterPostgresTxDb(pgConfig PostgresConfig) {
 
 // NewTxInstance creates a new instance of tx-db.
 // Make sure you Register first
-func NewTxInstance(instanceID string) *sqlx.DB {
+func NewTxInstance(instanceID string) *sql.DB {
 	db, err := sql.Open("txdb", instanceID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	tdb := sqlx.NewDb(db, "postgres")
-	return tdb
+	return db
 }
