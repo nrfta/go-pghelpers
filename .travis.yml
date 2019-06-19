@@ -1,29 +1,29 @@
 language: go
 
 go:
-  - "1.12"
+- "1.12"
 
 services:
-  - postgresql
+- postgresql
 
 addons:
   postgresql: "9.6"
 
 jobs:
   include:
-    - env:
-        - GO111MODULE=on
-        - ENV=test
-        - POSTGRES_USERNAME=postgres
-        - POSTGRES_PASSWORD=
+  - env:
+    - GO111MODULE=on
+    - ENV=test
+    - POSTGRES_USERNAME=postgres
+    - POSTGRES_PASSWORD=
 
-      # Default tests
-      name: Tests
-      before_install:
-        - psql --version
-        - psql -c 'CREATE DATABASE postress;' -U postgres
-      script:
-        - go test -v ./...
+    # Default tests
+    name: Tests
+    before_install:
+    - psql --version
+    - psql -c 'CREATE DATABASE postress;' -U postgres
+    script:
+    - go test -v ./...
 
 notifications:
   email: false
