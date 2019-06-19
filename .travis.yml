@@ -1,0 +1,32 @@
+language: go
+
+go:
+  - "1.12"
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.6"
+
+jobs:
+  include:
+    - env:
+        - GO111MODULE=on
+        - ENV=test
+        - POSTGRES_USERNAME=postgres
+        - POSTGRES_PASSWORD=
+
+      # Default tests
+      name: Tests
+      before_install:
+        - git config --global url.'git@github.com:'.insteadOf "https://github.com/"
+        - make build-cli
+        - ./demand-api g graphql
+        - ./demand-api db create
+        - ./demand-api db migrate up
+      script:
+        - go test -v ./...
+
+notifications:
+  email: false
