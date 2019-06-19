@@ -21,7 +21,7 @@ jobs:
       name: Tests
       before_install:
         - git config --global url.'git@github.com:'.insteadOf "https://github.com/"
-        - make build-cli
+        #- make build-cli
         - ./demand-api g graphql
         - ./demand-api db create
         - ./demand-api db migrate up
