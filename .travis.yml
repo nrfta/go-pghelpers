@@ -20,7 +20,7 @@ jobs:
       # Default tests
       name: Tests
       before_install:
-        - git config --global url.'git@github.com:'.insteadOf "https://github.com/"
+        #- git config --global url.'git@github.com:'.insteadOf "https://github.com/"
         #- make build-cli
         #- ./demand-api g graphql
         #- createdb postgres
