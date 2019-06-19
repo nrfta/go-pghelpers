@@ -20,16 +20,7 @@ jobs:
       # Default tests
       name: Tests
       before_install:
-        #- git config --global url.'git@github.com:'.insteadOf "https://github.com/"
-        #- make build-cli
-        #- ./demand-api g graphql
-        #- createdb postgres
-        #- ./go-pghelpers db create
-        #- ./go-pghelpers db migrate up
-
         - psql --version
-        #- psql -c "CREATE USER neighbor WITH PASSWORD 'pgpassword';" -U postgres
-        #- psql -c 'ALTER ROLE neighbor SUPERUSER;' -U postgres
         - psql -c 'CREATE DATABASE postress;' -U postgres
       script:
         - go test -v ./...
