@@ -23,7 +23,6 @@ var (
 
 var _ = Describe("RatingsDimension", func() {
 	It("Can generate ratings", func() {
-		//test generate address
 		result := testConfig.GenerateAddress()
 		Expect(result).To(Equal("host=test port=1 dbname=test user=test password=test sslmode=disable"))
 
