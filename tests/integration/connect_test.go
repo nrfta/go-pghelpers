@@ -14,7 +14,6 @@ var _ = Describe("Connection Test", func() {
 		testTracingConfig = pgh.PostgresTracingConfig{true, true,
 			true, true, true,
 			true, true}
-		//myTestString = "test"
 		testConfig = pgh.PostgresConfig{
 			Host:       "localhost",
 			Port:       5432,
