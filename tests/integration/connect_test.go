@@ -1,7 +1,6 @@
 package pghelpers_test
 
 import (
-	_ "github.com/lib/pq" // Postgres
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
