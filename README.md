@@ -16,13 +16,13 @@ PostgresConfig holds the information about db connection. For example
 
 ```go
 var postgresConfig = pghelpers.PostgresConfig{
-	Host:       myTestString,
+	Host:       localhost,
 	Port:       1,
-	Username:   myTestString,
-	Password:   myTestString,
-	Database:   myTestString,
+	Username:   neighbor,
+	Password:   ,
+	Database:   neighborly,
 	SSLEnabled: false,
-	Tracing:    testTracingConfig
+	Tracing:    tracingConfig
 }
 ```
 
