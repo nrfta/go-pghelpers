@@ -10,19 +10,34 @@ go get github.com/neighborly/go-pghelpers
 
 ## Usage
 
+### PostgresTracingConfig
+
+`PostgresTracingConfig` holds configuration information for enabling tracing on database calls.
+
+```go
+var tracingConfig = pghelpers.PostgresTracingConfig{
+	Enabled:					true,
+	CreateRowsNextSpan:			true,
+	CreateRowsCloseSpan:		true,
+	CreateRowsAffectedSpan:		true,
+	CreateLastInsertedIDSpan:	true,
+	AddQueryAttribute:			true,
+	AddQueryParamsAttributes:	true,
+}
+```
+
 ### PostgresConfig
 
-PostgresConfig holds the information about db connection. For example
+`PostgresConfig` holds the information for postgres database connection. For example
 
 ```go
 var postgresConfig = pghelpers.PostgresConfig{
-	Host:       localhost,
-	Port:       1,
-	Username:   neighbor,
-	Password:   ,
-	Database:   neighborly,
-	SSLEnabled: false,
-	Tracing:    tracingConfig
+	Host:       "localhost",
+	Port:       5432,
+	Username:   "postgres",
+	Password:   "",
+	Database:   "postgres",
+	Tracing:    tracingConfig,
 }
 ```
 
@@ -36,7 +51,7 @@ db, err := pghelpers.ConnectPostgres(postgresConfig)
 
 ### GenerateAddress
 
-GenerateAddress function returns Postgres connection string, which is used for `sql.open()`.
+`GenerateAddress` returns a Postgres connection string, which can be used for `sql.open()`.
 
 ```go
 addr := postgresConfig.GenerateAddress()
