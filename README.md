@@ -16,12 +16,12 @@ go get github.com/neighborly/go-pghelpers
 
 ```go
 var tracingConfig = pghelpers.PostgresTracingConfig{
-	Enabled:					true,
-	CreateRowsNextSpan:			true,
+	Enabled:			true,
+	CreateRowsNextSpan:		true,
 	CreateRowsCloseSpan:		true,
 	CreateRowsAffectedSpan:		true,
 	CreateLastInsertedIDSpan:	true,
-	AddQueryAttribute:			true,
+	AddQueryAttribute:		true,
 	AddQueryParamsAttributes:	true,
 }
 ```
