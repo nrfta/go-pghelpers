@@ -5,7 +5,6 @@ import (
 
 	_ "github.com/lib/pq" // Postgres
 
-	"contrib.go.opencensus.io/integrations/ocsql"
 	"github.com/neighborly/gtoolbox/errors"
 )
 
@@ -15,24 +14,6 @@ func ConnectPostgres(c PostgresConfig) (*sql.DB, errors.Error) {
 
 	driver := "postgres"
 	var err error
-
-	if c.Tracing.Enabled {
-		tracingConfig := ocsql.TraceOptions{
-			AllowRoot:    true,
-			Ping:         true,
-			RowsNext:     c.Tracing.CreateRowsNextSpan,
-			RowsClose:    c.Tracing.CreateRowsCloseSpan,
-			RowsAffected: c.Tracing.CreateRowsAffectedSpan,
-			LastInsertID: c.Tracing.CreateLastInsertedIDSpan,
-			Query:        c.Tracing.AddQueryAttribute,
-			QueryParams:  c.Tracing.AddQueryParamsAttributes,
-		}
-
-		driver, err = ocsql.Register(driver, ocsql.WithOptions(tracingConfig))
-		if err != nil {
-			return nil, errors.New("Unable to enable tracing on postgres db").WithCause(err)
-		}
-	}
 
 	db, err := sql.Open(driver, addr)
 	if err != nil {
