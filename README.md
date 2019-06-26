@@ -10,22 +10,6 @@ go get github.com/neighborly/go-pghelpers
 
 ## Usage
 
-### PostgresTracingConfig
-
-`PostgresTracingConfig` holds configuration information for enabling tracing on database calls.
-
-```go
-var tracingConfig = pghelpers.PostgresTracingConfig{
-	Enabled:			true,
-	CreateRowsNextSpan:		true,
-	CreateRowsCloseSpan:		true,
-	CreateRowsAffectedSpan:		true,
-	CreateLastInsertedIDSpan:	true,
-	AddQueryAttribute:		true,
-	AddQueryParamsAttributes:	true,
-}
-```
-
 ### PostgresConfig
 
 `PostgresConfig` holds the information for postgres database connection. For example
@@ -37,7 +21,6 @@ var postgresConfig = pghelpers.PostgresConfig{
 	Username:   "postgres",
 	Password:   "",
 	Database:   "postgres",
-	Tracing:    tracingConfig,
 }
 ```
 

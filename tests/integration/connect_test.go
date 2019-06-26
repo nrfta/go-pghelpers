@@ -16,7 +16,8 @@ var _ = Describe("Connection Test", func() {
 			Username:   "postgres",
 			Password:   "",
 			Database:   "postgres",
-			SSLEnabled: false,}
+			SSLEnabled: false,
+		}
 	)
 
 	It("should connect to a database", func() {
