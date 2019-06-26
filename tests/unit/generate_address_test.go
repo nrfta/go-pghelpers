@@ -2,6 +2,8 @@ package pghelpers_test
 
 import (
 	pgh "github.com/neighborly/go-pghelpers"
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 )
 
 var (
