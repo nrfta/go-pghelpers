@@ -5,7 +5,6 @@ import (
 
 	_ "github.com/lib/pq" // Postgres
 
-	"github.com/neighborly/gtoolbox/errors"
 	"github.com/neighborly/go-errors"
 )
 
