@@ -10,17 +10,13 @@ import (
 var _ = Describe("Connection Test", func() {
 
 	var (
-		testTracingConfig = pgh.PostgresTracingConfig{true, true,
-			true, true, true,
-			true, true}
 		testConfig = pgh.PostgresConfig{
 			Host:       "localhost",
 			Port:       5432,
 			Username:   "postgres",
 			Password:   "",
 			Database:   "postgres",
-			SSLEnabled: false,
-			Tracing:    testTracingConfig}
+			SSLEnabled: false,}
 	)
 
 	It("should connect to a database", func() {
