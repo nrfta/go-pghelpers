@@ -1,16 +1,12 @@
 package pghelpers_test
 
 import (
+	pgh "github.com/neighborly/go-pghelpers"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	pgh "github.com/neighborly/go-pghelpers"
 )
 
 var (
-	testTracingConfig = pgh.PostgresTracingConfig{true, true,
-		true, true, true,
-		true, true}
 	myTestString = "test"
 	testConfig   = pgh.PostgresConfig{
 		Host:       myTestString,
@@ -18,8 +14,7 @@ var (
 		Username:   myTestString,
 		Password:   myTestString,
 		Database:   myTestString,
-		SSLEnabled: false,
-		Tracing:    testTracingConfig}
+		SSLEnabled: false,}
 )
 
 var _ = Describe("Generate Address", func() {
