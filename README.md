@@ -1,4 +1,4 @@
-# go-pghelpers [![Build Status](https://travis-ci.com/neighborly/go-pghelpers.svg?branch=master)](https://travis-ci.com/neighborly/go-pghelpers)
+# go-pghelpers ![](https://github.com/neighborly/go-pghelpers/workflows/CI/badge.svg)
 
 Golang helpers for Postgres.
 

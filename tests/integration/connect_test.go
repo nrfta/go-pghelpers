@@ -1,21 +1,33 @@
 package pghelpers_test
 
 import (
+	"os"
+	"strconv"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
 	pgh "github.com/neighborly/go-pghelpers"
 )
 
+func getEnv(key string, fallback string) string {
+	value := os.Getenv(key)
+	if len(value) == 0 {
+		return fallback
+	}
+	return value
+}
+
 var _ = Describe("Connection Test", func() {
+	var port, _ = strconv.Atoi(getEnv("POSTGRES_PORT", "5432"))
 
 	var (
 		testConfig = pgh.PostgresConfig{
-			Host:       "localhost",
-			Port:       5432,
-			Username:   "postgres",
-			Password:   "",
-			Database:   "postgres",
+			Host:       getEnv("POSTGRES_HOST", "localhost"),
+			Port:       port,
+			Username:   getEnv("POSTGRES_USERNAME", "postgres"),
+			Password:   getEnv("POSTGRES_PASSWORD", ""),
+			Database:   getEnv("POSTGRES_DATABASE", "postgres"),
 			SSLEnabled: false,
 		}
 	)
