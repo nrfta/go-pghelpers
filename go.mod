@@ -8,6 +8,6 @@ require (
 	github.com/lib/pq v1.2.0
 	github.com/neighborly/go-errors v0.1.1
 	github.com/onsi/ginkgo v1.10.3
-	github.com/onsi/gomega v1.7.1
+	github.com/onsi/gomega v1.8.0
 	google.golang.org/appengine v1.6.1 // indirect
 )
