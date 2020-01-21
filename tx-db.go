@@ -3,13 +3,9 @@ package pghelpers
 import (
 	"database/sql"
 	"log"
-	"net/http/httptest"
 
 	"github.com/DATA-DOG/go-txdb"
-)
-
-var (
-	server *httptest.Server
+	_ "github.com/lib/pq" // Postgres
 )
 
 // RegisterPostgresTxDb registers postgres to txdb
