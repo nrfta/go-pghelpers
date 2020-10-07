@@ -19,8 +19,17 @@ var (
 )
 
 var _ = Describe("Generate Address", func() {
-	It("Can generate a postgres address", func() {
-		result := testConfig.GenerateAddress()
-		Expect(result).To(Equal("host=test port=1 dbname=test user=test password=test sslmode=disable"))
+	Context("GenerateAddress", func() {
+		It("Can generate a postgres address", func() {
+			result := testConfig.GenerateAddress()
+			Expect(result).To(Equal("host=test port=1 dbname=test user=test password=test sslmode=disable"))
+		})
+	})
+
+	Context("URL", func() {
+		It("should generate a postgres url", func() {
+			result := testConfig.URL()
+			Expect(result).To(Equal("postgresql://test:test@test:1/test?sslmode=disable"))
+		})
 	})
 })

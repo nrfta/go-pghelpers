@@ -23,3 +23,16 @@ func (c *PostgresConfig) GenerateAddress() string {
 	}
 	return addr
 }
+
+// URL returns a 'postgres://user:pass@host:port/database?sslmode=' style address
+func (c PostgresConfig) URL() string {
+	var sslMode string
+	if c.SSLEnabled {
+		sslMode = "require"
+	} else {
+		sslMode = "disable"
+	}
+	return fmt.Sprintf("postgresql://%s:%s@%s:%d/%s?sslmode=%s",
+		c.Username, c.Password, c.Host, c.Port, c.Database, sslMode)
+}
+
