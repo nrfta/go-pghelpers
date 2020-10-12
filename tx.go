@@ -1,6 +1,9 @@
 package pghelpers
 
-import "database/sql"
+import (
+	"context"
+	"database/sql"
+)
 
 // ExecInTxFunc defines a function type for the ExecInTx function argument.
 type ExecInTxFunc func(tx *sql.Tx) (commit bool)
@@ -9,7 +12,7 @@ type ExecInTxFunc func(tx *sql.Tx) (commit bool)
 // transaction to be commit. Returning false will rollback the transaction. To pass variables into the
 // transaction function or to return variables out, use a closure.
 func ExecInTx(db *sql.DB, fn ExecInTxFunc) error {
-	tx, err := db.Begin()
+	tx, err := db.BeginTx(context.Background(), &sql.TxOptions{Isolation: sql.LevelSerializable})
 	if err != nil {
 		return err
 	}
