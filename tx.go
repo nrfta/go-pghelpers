@@ -3,6 +3,7 @@ package pghelpers
 import (
 	"context"
 	"database/sql"
+	"fmt"
 )
 
 // ExecInTxFunc defines a function type for the ExecInTx function argument.
@@ -21,4 +22,23 @@ func ExecInTx(db *sql.DB, fn ExecInTxFunc) error {
 		return tx.Commit()
 	}
 	return tx.Rollback()
+}
+
+// SetSavepoint sets a named savepoint in the current transaction.
+func SetSavepoint(name string, tx *sql.Tx) error {
+	_, err := tx.Exec(fmt.Sprintf("SAVEPOINT %s", name))
+	return err
+}
+
+// ReleaseSavepoint releases a named savepoint previously set in the transaction. This allows the commands
+// executed after the savepoint to be committed.
+func ReleaseSavepoint(name string, tx *sql.Tx) error {
+	_, err := tx.Exec(fmt.Sprintf("RELEASE SAVEPOINT %s", name))
+	return err
+}
+
+// RollbackToSavepoint rolls back the transaction to the named savepoint.
+func RollbackToSavepoint(name string, tx *sql.Tx) error {
+	_, err := tx.Exec(fmt.Sprintf("ROLLBACK TO SAVEPOINT %s", name))
+	return err
 }

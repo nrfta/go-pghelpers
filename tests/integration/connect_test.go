@@ -10,26 +10,9 @@ import (
 	pgh "github.com/neighborly/go-pghelpers"
 )
 
-func getEnv(key string, fallback string) string {
-	value := os.Getenv(key)
-	if len(value) == 0 {
-		return fallback
-	}
-	return value
-}
-
 var _ = Describe("Connection Test", func() {
-	var port, _ = strconv.Atoi(getEnv("POSTGRES_PORT", "5432"))
-
 	var (
-		testConfig = pgh.PostgresConfig{
-			Host:       getEnv("POSTGRES_HOST", "localhost"),
-			Port:       port,
-			Username:   getEnv("POSTGRES_USERNAME", "postgres"),
-			Password:   getEnv("POSTGRES_PASSWORD", ""),
-			Database:   getEnv("POSTGRES_DATABASE", "postgres"),
-			SSLEnabled: false,
-		}
+		testConfig = getTestConfig()
 	)
 
 	It("should connect to a database", func() {
@@ -39,3 +22,23 @@ var _ = Describe("Connection Test", func() {
 		Expect(db.Ping()).To(Succeed())
 	})
 })
+
+func getTestConfig() pgh.PostgresConfig {
+	var port, _ = strconv.Atoi(getEnv("POSTGRES_PORT", "5432"))
+	return pgh.PostgresConfig{
+		Host:       getEnv("POSTGRES_HOST", "localhost"),
+		Port:       port,
+		Username:   getEnv("POSTGRES_USERNAME", "postgres"),
+		Password:   getEnv("POSTGRES_PASSWORD", ""),
+		Database:   getEnv("POSTGRES_DATABASE", "postgres"),
+		SSLEnabled: false,
+	}
+}
+
+func getEnv(key string, fallback string) string {
+	value := os.Getenv(key)
+	if len(value) == 0 {
+		return fallback
+	}
+	return value
+}
