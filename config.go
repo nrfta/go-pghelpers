@@ -2,6 +2,7 @@ package pghelpers
 
 // PostgresConfig holds the information for connecting with a postgres database
 type PostgresConfig struct {
+	ApplicationName string
 	Host            string
 	Port            int
 	Username        string

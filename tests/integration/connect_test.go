@@ -26,12 +26,13 @@ var _ = Describe("Connection Test", func() {
 func getTestConfig() pgh.PostgresConfig {
 	var port, _ = strconv.Atoi(getEnv("POSTGRES_PORT", "5432"))
 	return pgh.PostgresConfig{
-		Host:       getEnv("POSTGRES_HOST", "localhost"),
-		Port:       port,
-		Username:   getEnv("POSTGRES_USERNAME", "postgres"),
-		Password:   getEnv("POSTGRES_PASSWORD", ""),
-		Database:   getEnv("POSTGRES_DATABASE", "postgres"),
-		SSLEnabled: false,
+		ApplicationName: "test",
+		Host:            getEnv("POSTGRES_HOST", "localhost"),
+		Port:            port,
+		Username:        getEnv("POSTGRES_USERNAME", "postgres"),
+		Password:        getEnv("POSTGRES_PASSWORD", ""),
+		Database:        getEnv("POSTGRES_DATABASE", "postgres"),
+		SSLEnabled:      false,
 	}
 }
 
