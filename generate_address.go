@@ -21,6 +21,10 @@ func (c *PostgresConfig) GenerateAddress() string {
 	} else {
 		addr = addr + " sslmode=disable"
 	}
+
+	if c.ApplicationName != "" {
+		addr = addr + fmt.Sprintf(" application_name=%s", c.ApplicationName)
+	}
 	return addr
 }
 
@@ -32,7 +36,13 @@ func (c PostgresConfig) URL() string {
 	} else {
 		sslMode = "disable"
 	}
-	return fmt.Sprintf("postgresql://%s:%s@%s:%d/%s?sslmode=%s",
-		c.Username, c.Password, c.Host, c.Port, c.Database, sslMode)
-}
 
+	url := fmt.Sprintf("postgresql://%s:%s@%s:%d/%s?sslmode=%s",
+		c.Username, c.Password, c.Host, c.Port, c.Database, sslMode)
+
+	if c.ApplicationName != "" {
+		url += fmt.Sprintf("&fallback_application_name=%s", c.ApplicationName)
+	}
+
+	return url
+}

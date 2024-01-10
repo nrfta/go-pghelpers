@@ -20,6 +20,12 @@ func ConnectPostgres(c PostgresConfig) (*sql.DB, error) {
 		return nil, errors.Wrapf(err, "unable to open postgres db at %s:%d/%s", c.Host, c.Port, c.Database)
 	}
 
+	maxOpenConnections := c.MaxOpenConnections
+	if maxOpenConnections == 0 {
+		maxOpenConnections = 10
+	}
+	db.SetMaxOpenConns(maxOpenConnections)
+
 	if err := db.Ping(); err != nil {
 		return nil, errors.Wrapf(err, "unable to ping postgres db at %s:%d/%s", c.Host, c.Port, c.Database)
 	}
