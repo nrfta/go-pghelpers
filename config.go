@@ -4,7 +4,7 @@ package pghelpers
 type PostgresConfig struct {
 	ApplicationName string `mapstructure:"application_name"`
 	Host            string
-	HostReadOnly    string `mapstructure:"host_read_only"`
+	HostReadOnly    string `mapstructure:"host_ro"`
 	Port            int
 	Username        string
 	Password        string

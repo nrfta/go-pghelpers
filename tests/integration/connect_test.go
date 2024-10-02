@@ -35,7 +35,7 @@ func getTestConfig() pgh.PostgresConfig {
 	return pgh.PostgresConfig{
 		ApplicationName: "test",
 		Host:            getEnv("POSTGRES_HOST", "localhost"),
-		HostReadOnly:    getEnv("POSTGRES_HOST_READONLY", "localhost"),
+		HostReadOnly:    getEnv("POSTGRES_HOST_RO", "localhost"),
 		Port:            port,
 		Username:        getEnv("POSTGRES_USERNAME", "postgres"),
 		Password:        getEnv("POSTGRES_PASSWORD", ""),
