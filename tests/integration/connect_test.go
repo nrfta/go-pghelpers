@@ -21,6 +21,13 @@ var _ = Describe("Connection Test", func() {
 		Expect(err).To(BeNil())
 		Expect(db.Ping()).To(Succeed())
 	})
+
+	It("should connect to RO database", func() {
+		db, err := pgh.ConnectPostgresReadOnly(testConfig)
+		Expect(db).To(Not(BeNil()))
+		Expect(err).To(BeNil())
+		Expect(db.Ping()).To(Succeed())
+	})
 })
 
 func getTestConfig() pgh.PostgresConfig {
@@ -28,6 +35,7 @@ func getTestConfig() pgh.PostgresConfig {
 	return pgh.PostgresConfig{
 		ApplicationName: "test",
 		Host:            getEnv("POSTGRES_HOST", "localhost"),
+		HostReadOnly:    getEnv("POSTGRES_HOST_READONLY", "localhost"),
 		Port:            port,
 		Username:        getEnv("POSTGRES_USERNAME", "postgres"),
 		Password:        getEnv("POSTGRES_PASSWORD", ""),

@@ -10,7 +10,14 @@ import (
 
 // ConnectPostgres connects to postgres
 func ConnectPostgres(c PostgresConfig) (*sql.DB, error) {
-	addr := c.GenerateAddress()
+	return c.connectPostgres(false)
+}
+func ConnectPostgresReadOnly(c PostgresConfig) (*sql.DB, error) {
+	return c.connectPostgres(true)
+}
+
+func (c PostgresConfig) connectPostgres(ro bool) (*sql.DB, error) {
+	addr := c.generateAddress(ro)
 
 	driver := "postgres"
 	var err error
