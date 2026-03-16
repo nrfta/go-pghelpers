@@ -16,5 +16,5 @@ type PostgresConfig struct {
 	MaxIdleConnections int `mapstructure:"max_idle_connections"`
 	// MaxConnectionLifetimeMinutes ensures that connections are recycled after a certain amount of time,
 	// preventing stale connections from accumulating. Default 5 minutes.
-	MaxConnectionLifetimeMinutes int `mapstructure:"max_connection_lifetime"`
+	MaxConnectionLifetimeMinutes int `mapstructure:"max_connection_lifetime_minutes"`
 }
