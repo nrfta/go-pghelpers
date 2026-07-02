@@ -1,8 +1,6 @@
 module github.com/neighborly/go-pghelpers
 
-go 1.23.0
-
-toolchain go1.24.4
+go 1.25.0
 
 require (
 	github.com/DATA-DOG/go-txdb v0.1.3
@@ -25,9 +23,9 @@ require (
 	github.com/prometheus/procfs v0.0.0-20190425082905-87a4384529e0 // indirect
 	go.elastic.co/apm/v2 v2.7.1 // indirect
 	go.elastic.co/fastjson v1.5.1 // indirect
-	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.30.0 // indirect
-	golang.org/x/text v0.22.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v0.0.0-20181124034731-591f970eefbb // indirect
