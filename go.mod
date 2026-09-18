@@ -5,9 +5,9 @@ go 1.24.0
 toolchain go1.24.4
 
 require (
-	github.com/DATA-DOG/go-txdb v0.1.3
-	github.com/lib/pq v1.10.9
-	github.com/neighborly/go-errors v0.4.0
+	github.com/DATA-DOG/go-txdb v0.2.1
+	github.com/lib/pq v1.12.3
+	github.com/neighborly/go-errors v0.4.1
 	github.com/onsi/ginkgo/v2 v2.28.1
 	github.com/onsi/gomega v1.39.1
 	go.elastic.co/apm/module/apmsql/v2 v2.7.1
