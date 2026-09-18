@@ -12,4 +12,9 @@ type PostgresConfig struct {
 	MigrationsTable string `mapstructure:"migrations_table"`
 	// MaxOpenConnections sets the maximum size of the connection pool. Default 10.
 	MaxOpenConnections int `mapstructure:"max_open_connections"`
+	// MaxIdleConnections set the maximum idle connections that are held open. Default 2.
+	MaxIdleConnections int `mapstructure:"max_idle_connections"`
+	// MaxConnectionLifetimeMinutes ensures that connections are recycled after a certain amount of time,
+	// preventing stale connections from accumulating. Default 5 minutes.
+	MaxConnectionLifetimeMinutes int `mapstructure:"max_connection_lifetime_minutes"`
 }

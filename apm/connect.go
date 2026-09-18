@@ -4,9 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/neighborly/go-pghelpers"
 	"go.elastic.co/apm/module/apmsql/v2"
 	_ "go.elastic.co/apm/module/apmsql/v2/pq"
+
+	"github.com/neighborly/go-pghelpers"
 )
 
 // Connect connects to postgres and adds APM instrumentation
@@ -22,11 +23,7 @@ func Connect(c pghelpers.PostgresConfig) (*sql.DB, error) {
 		)
 	}
 
-	maxOpenConnections := 10
-	if c.MaxOpenConnections > 0 {
-		maxOpenConnections = c.MaxOpenConnections
-	}
-	db.SetMaxOpenConns(maxOpenConnections)
+	pghelpers.SetupPool(c, db)
 
 	if err := db.Ping(); err != nil {
 		return nil, fmt.Errorf(
